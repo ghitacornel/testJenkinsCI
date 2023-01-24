@@ -38,11 +38,11 @@ services:
       - jenkins_agent_data_run:/run
       - jenkins_agent_data_tmp:/tmp
 
-  #SonarQube
-  #http://localhost:9000/projects
-  #default user = admin
-  #default pass = admin
-  #        pass = sefusefu
+  # SonarQube
+  # http://localhost:9000/projects
+  # default user = admin
+  # default pass = admin
+  #         pass = sefusefu
   sonarQube:
     image: sonarqube:latest
     container_name: sonarQube
@@ -62,6 +62,8 @@ services:
       - ci
 
   # SonarQube database
+  # do not expose port
+  # define in the same network as sonarQube
   sonarQube_database:
     image: postgres:latest
     container_name: sonarQube_database
