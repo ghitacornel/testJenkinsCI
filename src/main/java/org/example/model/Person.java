@@ -23,7 +23,7 @@ public class Person {
 
     @NotBlank
     @Size(min = 1, max = 50)
-    @Column(name = "name", length = 50)
+    @Column(name = "name", length = 50, unique = true)
     private String name;
 
     @NotBlank
