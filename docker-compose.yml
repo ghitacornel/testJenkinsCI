@@ -12,7 +12,7 @@ services:
   # email = ghita_cornel@yahoo.com
   # url = http://localhost:8080/
   jenkins:
-    image: jenkins/jenkins:latest-jdk17
+    image: jenkins/jenkins
     container_name: jenkins
     privileged: true
     user: root
