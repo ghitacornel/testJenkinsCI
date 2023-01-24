@@ -70,8 +70,8 @@ services:
       POSTGRES_PASSWORD: sonar
       POSTGRES_DB: sonar
     volumes:
-      - postgresql:/var/lib/postgresql
-      - postgresql_data:/var/lib/postgresql/data
+      - SonarQube_postgresql:/var/lib/postgresql
+      - SonarQube_postgresql_data:/var/lib/postgresql/data
     networks:
       - ci
 
@@ -96,6 +96,8 @@ volumes:
   SonarQube_data:
   SonarQube_extensions:
   SonarQube_logs:
+  SonarQube_postgresql:
+  SonarQube_postgresql_data:
   postgresql:
   postgresql_data:
   nexus_data:
