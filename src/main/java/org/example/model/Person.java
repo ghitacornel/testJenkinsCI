@@ -1,17 +1,16 @@
 package org.example.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.NamedQuery;
-import java.time.LocalDateTime;
+import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Entity
-@NamedQuery(name = "Person.findByPassword", query = "select t from Person t where t.password = :password")
+@Table(name = "person")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -22,19 +21,14 @@ public class Person {
     @Id
     private Integer id;
 
+    @NotBlank
+    @Size(min = 1, max = 50)
+    @Column(name = "name", length = 50)
     private String name;
 
-    @JsonProperty("pass")
-    @Column(name = "pass")
+    @NotBlank
+    @Size(min = 1, max = 50)
+    @Column(name = "pass", length = 50)
     private String password;
-
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime dateOfBirth;
-
-    public Person(Integer id, String name, String password) {
-        this.id = id;
-        this.name = name;
-        this.password = password;
-    }
 
 }
