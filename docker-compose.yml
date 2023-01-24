@@ -5,7 +5,7 @@
 # sysctl -w vm.max_map_count=262144
 services:
 
-  # ab2444e185624e83b0c795a85b16887d
+  # 560b9c910b38484db0895f0acc57089f
   # user = cornel
   # pass = sefusefu
   # full name = cornel
@@ -21,9 +21,11 @@ services:
       - 50000:50000
     volumes:
       - jenkins_configuration:/var/jenkins_home
+    networks:
+      - ci
 
   jenkins_agent:
-    image: jenkins/ssh-agent:jdk17
+    image: jenkins/ssh-agent
     container_name: jenkins_agent
     privileged: true
     user: root
@@ -37,6 +39,8 @@ services:
       - jenkins_agent_data_home:/home
       - jenkins_agent_data_run:/run
       - jenkins_agent_data_tmp:/tmp
+    networks:
+      - ci
 
   # SonarQube
   # http://localhost:9000/projects
