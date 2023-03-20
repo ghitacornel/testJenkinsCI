@@ -32,6 +32,8 @@ services:
     networks:
       - ci
 
+  # step 2 (optional)
+  # define a build agent
   jenkins_agent:
     image: jenkins/ssh-agent
     container_name: jenkins_agent
