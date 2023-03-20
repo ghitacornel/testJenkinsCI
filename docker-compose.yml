@@ -5,7 +5,15 @@
 # sysctl -w vm.max_map_count=262144
 services:
 
-  # 560b9c910b38484db0895f0acc57089f
+  # step 1
+  # start the jenkins container
+  # check the initial password displayed in the container console 512522d261a54508a89d7a0cd4fa5594
+  # wait for completion
+  # go to http://localhost:8080/
+  # use initial passsword
+  # install all plugins
+  # create first user
+  # use the following credentials
   # user = cornel
   # pass = sefusefu
   # full name = cornel
