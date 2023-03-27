@@ -1,11 +1,6 @@
 pipeline {
     agent any
-    tools {
-      maven 'Maven 3.9.1'
-      jdk 'jdk17'
-    }
     environment {
-        JAVA_HOME = "/var/jenkins_home/tools/hudson.model.JDK/jdk17/jdk-17.0.2/bin"
         NEXUS_VERSION = "nexus3"
         NEXUS_PROTOCOL = "http"
         NEXUS_URL = "nexus:8081"
@@ -16,8 +11,6 @@ pipeline {
          stage('Info') {
              steps {
                  sh 'java -version'
-                 sh 'echo $JAVA_HOME'
-                 sh 'export JAVA_HOME=/var/jenkins_home/tools/hudson.model.JDK/jdk17/jdk-17.0.2'
                  sh 'echo $JAVA_HOME'
                  sh 'mvn -version'
              }
