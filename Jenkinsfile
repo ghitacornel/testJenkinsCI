@@ -6,7 +6,7 @@ pipeline {
     }
     environment {
         JAVA_HOME = ${tool 'jdk17'}
-        PATH= ${env.JAVA_HOME}/bin:${env.PATH}
+        PATH = ${env.JAVA_HOME}/bin:${env.PATH}
         NEXUS_VERSION = "nexus3"
         NEXUS_PROTOCOL = "http"
         NEXUS_URL = "nexus:8081"
