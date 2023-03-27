@@ -15,7 +15,8 @@ pipeline {
          stage('Info') {
              steps {
                  sh 'java -version'
-                 sh '$JAVA_HOME/bin/java -version'
+                 sh 'export JAVA_HOME=/opt/java/openjdk/bin/java'
+                 sh 'echo $JAVA_HOME'
                  sh 'mvn -version'
              }
          }
