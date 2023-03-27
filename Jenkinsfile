@@ -12,6 +12,12 @@ pipeline {
         NEXUS_CREDENTIAL_ID = "nexus-user-credentials"
     }
     stages {
+         stage('Info') {
+             steps {
+                 sh 'java -version'
+                 sh 'mvn -version'
+             }
+         }
         stage('Clean') {
             steps {
                 sh 'mvn clean'
