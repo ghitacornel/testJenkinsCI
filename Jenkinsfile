@@ -14,9 +14,8 @@ pipeline {
     stages {
          stage('Info') {
              steps {
-                 jdk = tool name: 'jdk17'
-                 env.JAVA_HOME = "${jdk}"
                  sh 'java -version'
+                 sh '$JAVA_HOME/bin/java -version'
                  sh 'mvn -version'
              }
          }
