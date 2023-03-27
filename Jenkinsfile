@@ -5,6 +5,7 @@ pipeline {
       jdk 'jdk17'
     }
     environment {
+        JAVA_HOME = "/var/jenkins_home/tools/hudson.model.JDK/jdk17/jdk-17.0.2"
         NEXUS_VERSION = "nexus3"
         NEXUS_PROTOCOL = "http"
         NEXUS_URL = "nexus:8081"
