@@ -16,7 +16,7 @@ pipeline {
              steps {
                  sh 'java -version'
                  sh 'echo $JAVA_HOME'
-                 sh 'export JAVA_HOME=/opt/java/openjdk/bin/java'
+                 sh 'export JAVA_HOME=/var/jenkins_home/tools/hudson.model.JDK/jdk17/jdk-17.0.2'
                  sh 'echo $JAVA_HOME'
                  sh 'mvn -version'
              }
