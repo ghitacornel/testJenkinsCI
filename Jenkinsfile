@@ -40,12 +40,12 @@ pipeline {
         }
         stage("SonarQube analysis") {
             steps {
-//               withSonarQubeEnv('SonarQubeServer') {
-//                 sh 'mvn sonar:sonar \
-//                       -Dsonar.projectKey=testSpringBoot \
-//                       -Dsonar.host.url=http://sonarQube:9000 \
-//                       -Dsonar.login=sqp_697690f385dcb2bc296e288da0bdc747c053da50'
-//               }
+              withSonarQubeEnv('SonarQubeServer') {
+                sh 'mvn sonar:sonar \
+                      -Dsonar.projectKey=testSpringBoot \
+                      -Dsonar.host.url=http://sonarQube:9000 \
+                      -Dsonar.login=sqp_697690f385dcb2bc296e288da0bdc747c053da50'
+              }
             }
           }
 //           stage("Quality Gate") {
