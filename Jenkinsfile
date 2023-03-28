@@ -19,23 +19,28 @@ pipeline {
                 sh 'echo $M2_HOME'
             }
         }
-        stage('Checkout') {
+        stage('Delete') {
+            steps {
+                cleanWs()
+            }
+        }
+        stage('Git Clone') {
             steps {
                 cleanWs()
                 git branch: "${env.BRANCH_NAME}", url: "${env.REPO_URL}"
             }
         }
-        stage('Clean') {
+        stage('MVN Clean') {
             steps {
                 sh 'mvn clean'
             }
         }
-        stage('Build') {
+        stage('MVN Install') {
             steps {
                 sh 'mvn install -DskipTests'
             }
         }
-        stage('Test') {
+        stage('MVN Test') {
             steps {
                 sh 'mvn test'
             }
