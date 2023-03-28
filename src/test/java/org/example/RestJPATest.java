@@ -92,7 +92,8 @@ public class RestJPATest {
 
         // delete
         mvc.perform(delete("/person/{id}", "1"))
-                .andExpect(status().isOk());
+                .andExpect(status().isOk())
+                .andExpect(content().string(""));
 
         // read
         mvc.perform(get("/person"))
