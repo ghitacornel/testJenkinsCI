@@ -177,7 +177,7 @@
                         </executions>
                         <configuration>
                             <serverId>nexus-releases</serverId>
-                            <nexusUrl>http://nexus:8081</nexusUrl>
+                            <nexusUrl>http://nexus:8081/repository/customRepository/</nexusUrl>
                             <skipStaging>true</skipStaging>
                         </configuration>
                     </plugin>
