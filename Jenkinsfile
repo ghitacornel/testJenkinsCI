@@ -19,7 +19,7 @@ pipeline {
                 sh 'echo $M2_HOME'
             }
         }
-        stage('Clone') {
+        stage('Checkout') {
             steps {
                 cleanWs()
                 git branch: "${env.BRANCH_NAME}", url: "${env.REPO_URL}"
