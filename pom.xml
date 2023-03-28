@@ -4,7 +4,7 @@
 
     <groupId>org.example</groupId>
     <artifactId>testJenkinsCI</artifactId>
-    <version>1.1-SNAPSHOT</version>
+    <version>1.1</version>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
@@ -154,7 +154,7 @@
         <connection>scm:git:https://github.com/ghitacornel/testJenkinsCI.git</connection>
         <url>https://github.com/ghitacornel/testJenkinsCI</url>
         <developerConnection>scm:git:https://github.com/ghitacornel/testJenkinsCI.git</developerConnection>
-      <tag>HEAD</tag>
+      <tag>v1.1</tag>
   </scm>
 
     <profiles>
