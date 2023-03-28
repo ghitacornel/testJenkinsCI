@@ -21,6 +21,7 @@ pipeline {
         }
         stage('Clone') {
             steps {
+                cleanWs()
                 git branch: "${env.BRANCH_NAME}", url: "${env.REPO_URL}"
             }
         }
@@ -48,6 +49,15 @@ pipeline {
             steps{
                 withSonarQubeEnv('SonarQubeServer') {
                     sh 'mvn sonar:sonar -Dsonar.projectKey=testJenkinsCI'
+                }
+            }
+        }
+        stage('Release') {
+            steps{
+                withMaven(mavenSettingsConfig: '9e1130dd-b191-4a85-83fd-d27ce0bc6b1b') {
+                    sh 'mvn release:clean'
+                    sh 'mvn release:prepare'
+                    sh 'mvn release:perform -DskipTests'
                 }
             }
         }
