@@ -56,12 +56,14 @@ pipeline {
 //               }
 //             }
 //           }
-//         stage("Publish to Nexus Repository Manager") {
-//             steps {
-//                 script {
-//
-//                 }
-//             }
-//         }
+        stage("Publish to Nexus Repository Manager") {
+            steps {
+                script {
+                    sh 'mvn release:clean'
+                    sh 'mvn release:prepare'
+                    sh 'mvn release:perform'
+                }
+            }
+        }
     }
 }
