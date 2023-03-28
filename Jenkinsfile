@@ -14,8 +14,9 @@ pipeline {
         stage('Info') {
             steps {
                 sh 'java -version'
-                sh 'echo $JAVA_HOME'
                 sh 'mvn -version'
+                sh 'echo $JAVA_HOME'
+                sh 'echo $M2_HOME'
             }
         }
         stage('Clean') {
