@@ -39,23 +39,6 @@ pipeline {
                 }
             }
         }
-//         stage("SonarQube analysis") {
-//             steps {
-//               withSonarQubeEnv('SonarQubeServer') {
-//                 sh 'mvn sonar:sonar \
-//                       -Dsonar.projectKey=testSpringBoot \
-//                       -Dsonar.host.url=http://sonarQube:9000 \
-//                       -Dsonar.login=sqp_697690f385dcb2bc296e288da0bdc747c053da50'
-//               }
-//             }
-//           }
-//           stage("Quality Gate") {
-//             steps {
-//               timeout(time: 5, unit: 'MINUTES') {
-//                 waitForQualityGate abortPipeline: true
-//               }
-//             }
-//           }
         stage("Publish to Nexus Repository Manager") {
             steps {
                 script {
