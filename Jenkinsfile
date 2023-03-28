@@ -19,7 +19,7 @@ pipeline {
                 sh 'echo $M2_HOME'
             }
         }
-        stage('Clone Repository') {
+        stage('Clone') {
             steps {
                 git branch: "${env.BRANCH_NAME}", url: "${env.REPO_URL}"
             }
@@ -44,7 +44,7 @@ pipeline {
                 }
             }
         }
-        stage('SonarQube analysis') {
+        stage('SonarQube') {
             steps{
                 withSonarQubeEnv('SonarQubeServer') {
                     sh 'mvn sonar:sonar -Dsonar.projectKey=testJenkinsCI'
