@@ -150,4 +150,11 @@
         <developerConnection>scm:git:https://github.com/ghitacornel/testJenkinsCI.git</developerConnection>
     </scm>
 
+    <distributionManagement>
+        <repository>
+            <id>nexus-releases</id>
+            <url>http://nexus:8081/repository/customRepository/</url>
+        </repository>
+    </distributionManagement>
+
 </project>
