@@ -21,7 +21,8 @@ pipeline {
         }
         stage('Clean') {
             steps {
-            wsCleanup()
+                // Clean before build
+                cleanWs()
                 sh 'mvn clean'
             }
         }
