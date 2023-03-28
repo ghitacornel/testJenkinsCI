@@ -133,5 +133,10 @@
         </plugins>
     </build>
 
+    <scm>
+        <connection>scm:git:https://github.com/ghitacornel/testJenkinsCI.git</connection>
+        <url>https://github.com/ghitacornel/testJenkinsCI</url>
+        <developerConnection>scm:git:https://github.com/ghitacornel/testJenkinsCI.git</developerConnection>
+    </scm>
 
 </project>
