@@ -137,6 +137,7 @@
                 <configuration>
                     <arguments>-DskipTests</arguments>
                     <localCheckout>true</localCheckout>
+                    <pushChanges>false</pushChanges>
                     <preparationGoals>validate</preparationGoals>
                 </configuration>
             </plugin>
@@ -175,11 +176,6 @@
                                 </goals>
                             </execution>
                         </executions>
-                        <configuration>
-                            <serverId>nexus-releases</serverId>
-                            <nexusUrl>http://nexus:8081/repository/customRepository/</nexusUrl>
-                            <skipStaging>true</skipStaging>
-                        </configuration>
                     </plugin>
                 </plugins>
             </build>
