@@ -137,7 +137,6 @@
                 <configuration>
                     <arguments>-DskipTests</arguments>
                     <localCheckout>true</localCheckout>
-                    <pushChanges>false</pushChanges>
                     <preparationGoals>validate</preparationGoals>
                 </configuration>
             </plugin>
