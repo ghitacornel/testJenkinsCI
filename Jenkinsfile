@@ -3,6 +3,13 @@ pipeline {
     tools {
       maven 'Maven 3.9.1'
     }
+    environment {
+        BRANCH_NAME = "master"
+        REPO_URL = "https://github.com/ghitacornel/testJenkinsCI.git"
+    }
+    options {
+        skipDefaultCheckout true
+    }
     stages {
         stage('Info') {
             steps {
@@ -10,6 +17,11 @@ pipeline {
                 sh 'mvn -version'
                 sh 'echo $JAVA_HOME'
                 sh 'echo $M2_HOME'
+            }
+        }
+        stage('Clone Repository') {
+            steps {
+                git branch: "${env.BRANCH_NAME}", url: "${env.REPO_URL}"
             }
         }
         stage('Clean') {
