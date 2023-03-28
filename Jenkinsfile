@@ -17,6 +17,8 @@ pipeline {
                 sh 'mvn -version'
                 sh 'echo $JAVA_HOME'
                 sh 'echo $M2_HOME'
+                sh 'git config --global user.email "ghita_cornel@yahoo.com"'
+                sh 'git config --global user.name "cornel"'
             }
         }
         stage('Clean') {
