@@ -23,7 +23,7 @@ pipeline {
             steps {
                 // Clean before build
                 cleanWs()
-                sh 'git checkout'
+                sh 'git clone https://github.com/ghitacornel/testJenkinsCI.git'
             }
         }
         stage('Clean') {
