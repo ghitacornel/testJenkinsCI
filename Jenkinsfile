@@ -19,6 +19,13 @@ pipeline {
                 sh 'echo $M2_HOME'
             }
         }
+        stage('Checkout') {
+            steps {
+                // Clean before build
+                cleanWs()
+                sh 'git checkout'
+            }
+        }
         stage('Clean') {
             steps {
                 // Clean before build
