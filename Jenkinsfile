@@ -19,13 +19,6 @@ pipeline {
                 sh 'echo $M2_HOME'
             }
         }
-        stage('Checkout') {
-            steps {
-                // Clean before build
-                cleanWs()
-                sh 'git clone https://github.com/ghitacornel/testJenkinsCI.git'
-            }
-        }
         stage('Clean') {
             steps {
                 sh 'mvn clean'
