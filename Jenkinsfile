@@ -28,8 +28,6 @@ pipeline {
         }
         stage('Clean') {
             steps {
-                // Clean before build
-                cleanWs()
                 sh 'mvn clean'
             }
         }
