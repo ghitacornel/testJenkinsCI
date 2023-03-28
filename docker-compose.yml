@@ -7,50 +7,33 @@ services:
 
   # step 1
   # start the jenkins container
-  # check the initial password displayed in the container console 512522d261a54508a89d7a0cd4fa5594
+  # check the initial password displayed in the container console e.g. e35910929b9e4b41bbde201a63d882ee
   # wait for completion
   # go to http://localhost:8080/
-  # use initial passsword
-  # install all plugins
+  # use initial password
+  # install suggested plugins or whatever
   # create first user
-  # use the following credentials
+  # use the following credential
   # user = cornel
   # pass = sefusefu
   # full name = cornel
   # email = ghita_cornel@yahoo.com
-  # url = http://localhost:8080/
+  # url = http://localhost:7777/
   jenkins:
     image: jenkins/jenkins
     container_name: jenkins
     privileged: true
     user: root
     ports:
-      - 8080:8080
+      - 7777:8080
       - 50000:50000
     volumes:
       - jenkins_configuration:/var/jenkins_home
     networks:
-      - ci
+      - ci_network
 
   # step 2 (optional)
   # define a build agent
-  jenkins_agent:
-    image: jenkins/ssh-agent
-    container_name: jenkins_agent
-    privileged: true
-    user: root
-    expose:
-      - 22
-    environment:
-      - JENKINS_AGENT_SSH_PUBKEY=ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC5KyZYqZO6mfr9uo5CdlwxI9t9QihodW94RxJcihbXCiXhecBwj2gm5EYTWc+W6AueZbZ700MCv0MCOO6jso7LClfq6Ibti9m1NK0laGg5lbXIPdhW8jeObN1TF+3qiWnS5ZY003ar8jHg+DLXn62HbnT3ZOifflaXm35iH/iRAc+Xqrt6GxjarpA+iJwrEAIaZy6dwgV4VDxTi8Wk0Xq8cMGoNJHRBydZcwfhw9pEFmLFNPqDVSEubRatny9ZYTXiChgsSZHad/PtG84g3TMckA8oFo16Zar7QUXK4Vr026Dz9mDgplI7dBbgY/2XYqatKW8A+f61+L/CYJwTkQVk7QnaUITNrGAj4853AhSnAz2A+yzG/sWyamnnW63NfnlXzbjETJ1w4oSrSsrCD+OdzRM6DIJauZjLKN3GeVI8cVdWGZNqZGW8AxtdmAc1BDVvQQ7in70F/ErWuURdAzgr37QgHlkYHFDPGu7ZHcmXIUIniHXKjUnste1jQmTBIPc= cornel@cornel
-    volumes:
-      - jenkins_agent_data_var_run:/var/run
-      - jenkins_agent_data_home_jenkins:/home/jenkins
-      - jenkins_agent_data_home:/home
-      - jenkins_agent_data_run:/run
-      - jenkins_agent_data_tmp:/tmp
-    networks:
-      - ci
 
   # SonarQube
   # http://localhost:9000/projects
@@ -67,13 +50,12 @@ services:
       SONAR_JDBC_USERNAME: sonar
       SONAR_JDBC_PASSWORD: sonar
     volumes:
-      - SonarQube_data:/opt/SonarQube/data
-      - SonarQube_extensions:/opt/SonarQube/extensions
-      - SonarQube_logs:/opt/SonarQube/logs
+      - sonarqube_data:/opt/SonarQube/data
     ports:
       - 9000:9000
     networks:
-      - ci
+      - ci_network
+      - sonarQube_network
 
   # SonarQube database
   # do not expose port
@@ -86,10 +68,10 @@ services:
       POSTGRES_PASSWORD: sonar
       POSTGRES_DB: sonar
     volumes:
-      - SonarQube_postgresql:/var/lib/postgresql
-      - SonarQube_postgresql_data:/var/lib/postgresql/data
+      - sonarqube_postgresql:/var/lib/postgresql
+      - sonarqube_postgresql_data:/var/lib/postgresql/data
     networks:
-      - ci
+      - sonarQube_network
 
   #http://localhost:8081
   #user=admin
@@ -101,23 +83,18 @@ services:
       - nexus_data:/sonatype-work
     ports:
       - 8081:8081
+    networks:
+      - ci_network
 
 volumes:
   jenkins_configuration:
-  jenkins_agent_data_var_run:
-  jenkins_agent_data_home_jenkins:
-  jenkins_agent_data_home:
-  jenkins_agent_data_run:
-  jenkins_agent_data_tmp:
-  SonarQube_data:
-  SonarQube_extensions:
-  SonarQube_logs:
-  SonarQube_postgresql:
-  SonarQube_postgresql_data:
-  postgresql:
-  postgresql_data:
+  sonarqube_data:
+  sonarqube_postgresql:
+  sonarqube_postgresql_data:
   nexus_data:
 
 networks:
-  ci:
+  sonarQube_network:
+    driver: bridge
+  ci_network:
     driver: bridge
