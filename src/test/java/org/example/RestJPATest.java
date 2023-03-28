@@ -20,7 +20,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 @Transactional
-public class RestJPATest {
+class RestJPATest {
 
     @Autowired
     MockMvc mvc;
@@ -37,7 +37,7 @@ public class RestJPATest {
     }
 
     @Test
-    public void testFindByIdWithNoResult() throws Exception {
+    void testFindByIdWithNoResult() throws Exception {
         mvc.perform(get("/person/{id}", "-1"))
                 .andExpect(status().isNotFound())
                 .andExpect(content().string("no person found for id -1"));
@@ -45,7 +45,7 @@ public class RestJPATest {
 
     @Test
     @SneakyThrows
-    public void testReadCreateReadUpdateReadDeleteRead() {
+    void testReadCreateReadUpdateReadDeleteRead() {
 
         // read
         mvc.perform(get("/person"))
