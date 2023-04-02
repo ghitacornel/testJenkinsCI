@@ -143,6 +143,18 @@
                 </executions>
             </plugin>
 
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <configuration>
+                    <!-- no need to run tests for release, already executed before -->
+                    <arguments>-DskipTests</arguments>
+                    <localCheckout>true</localCheckout>
+                    <pushChanges>false</pushChanges>
+                    <preparationGoals>validate</preparationGoals>
+                </configuration>
+            </plugin>
+
         </plugins>
     </build>
 
