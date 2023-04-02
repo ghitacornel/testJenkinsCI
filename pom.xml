@@ -145,13 +145,24 @@
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-release-plugin</artifactId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.5.0</version>
+                <executions>
+                    <execution>
+                        <id>main-javadoc</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                        <configuration>
+                            <sourceFileExcludes>module-info.java</sourceFileExcludes>
+                        </configuration>
+                    </execution>
+                </executions>
                 <configuration>
-                    <!-- no need to run tests for release, already executed before -->
-                    <arguments>-DskipTests</arguments>
-                    <localCheckout>true</localCheckout>
-                    <pushChanges>false</pushChanges>
-                    <preparationGoals>validate</preparationGoals>
+                    <quiet>true</quiet>
+                    <failOnWarnings>false</failOnWarnings>
+                    <failOnError>true</failOnError>
                 </configuration>
             </plugin>
 
