@@ -2,6 +2,7 @@ pipeline {
     agent any
     tools {
       maven 'Maven 3.9.1'
+      jdk 'jdk17'
     }
     environment {
         BRANCH_NAME = "master"
@@ -62,7 +63,7 @@ pipeline {
                 withMaven(mavenSettingsConfig: '9e1130dd-b191-4a85-83fd-d27ce0bc6b1b') {
                     sh 'mvn release:clean'
                     sh 'mvn release:prepare'
-                    sh 'mvn release:perform -DskipTests'
+                    sh 'mvn release:perform'
                 }
             }
         }
