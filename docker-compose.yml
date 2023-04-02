@@ -19,6 +19,10 @@ services:
   # full name = cornel
   # email = ghita_cornel@yahoo.com
   # url = http://localhost:7777/
+  # add a JKD installation named jdk17-install
+  # using download URl = https://download.oracle.com/java/17/archive/jdk-17.0.6_linux-x64_bin.tar.gz
+  # add a JDK installation named jdk17
+  # using JAVA_HOME = /var/jenkins_home/tools/hudson.model.JDK/jdk17/jdk-17.0.6
   jenkins:
     image: jenkins/jenkins
     container_name: jenkins
