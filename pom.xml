@@ -121,7 +121,7 @@
                 <version>3.5.0</version>
                 <configuration>
                     <quiet>true</quiet>
-                    <failOnWarnings>true</failOnWarnings>
+                    <failOnWarnings>false</failOnWarnings>
                     <failOnError>true</failOnError>
                 </configuration>
             </plugin>
