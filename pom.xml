@@ -139,7 +139,7 @@
                     <!-- no need to run tests for release, already executed before -->
                     <arguments>-DskipTests</arguments>
                     <localCheckout>true</localCheckout>
-                    <pushChanges>true</pushChanges>
+                    <pushChanges>false</pushChanges>
                     <preparationGoals>validate</preparationGoals>
                 </configuration>
             </plugin>
