@@ -61,9 +61,7 @@ pipeline {
         stage('Release') {
             steps{
                 withMaven(mavenSettingsConfig: '9e1130dd-b191-4a85-83fd-d27ce0bc6b1b') {
-                    sh 'mvn release:clean'
-                    sh 'mvn release:prepare'
-                    sh 'mvn release:perform'
+                    sh 'mvn -B release:clean release:prepare release:perform'
                 }
             }
         }
